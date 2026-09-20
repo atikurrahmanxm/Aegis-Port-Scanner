@@ -1,11 +1,11 @@
 """
 AegisScan: Advanced Multithreaded Network Port Scanner & Service Fingerprinter.
-Author: Emily
+Author: Atikur Rahman
 License: MIT
 """
 
 __version__ = "1.0.0"
-__author__ = "Emily"
+__author__ = "Atikur Rahman"
 __description__ = "High-performance multithreaded network port scanner with banner grabbing and service detection"
 
 from port_scanner.core.scanner import PortScanner, ScanResult, PortResult

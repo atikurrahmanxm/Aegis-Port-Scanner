@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "aegisscan"
 version = "1.0.0"
 authors = [
-  { name="Emily", email="emily@example.com" },
+  { name="Atikur Rahman" },
 ]
 description = "A high-performance multithreaded network port scanner with banner grabbing and service detection"
 readme = "README.md"
