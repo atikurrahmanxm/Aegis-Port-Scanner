@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aegisscan"
+version = "1.0.0"
+authors = [
+  { name="Emily", email="emily@example.com" },
+]
+description = "A high-performance multithreaded network port scanner with banner grabbing and service detection"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: System :: Networking",
+    "Topic :: Security",
+]
+keywords = ["port-scanner", "cybersecurity", "networking", "banner-grabbing", "penetration-testing", "reconnaissance"]
+
+[project.scripts]
+aegisscan = "port_scanner.cli:main"
