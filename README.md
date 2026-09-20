@@ -340,6 +340,6 @@ Conducted on a standard quad-core workstation targeting a local high-density tes
 
 ## 👤 Author & License
 
-- **Author**: Emily
+- **Author**: Atikur Rahman
 - **Focus**: Cybersecurity, Penetration Testing & Secure Systems Engineering
 - **License**: [MIT License](LICENSE) - Free for academic, personal, and commercial security research.
