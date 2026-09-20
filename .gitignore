@@ -56,6 +56,9 @@ venv.bak/
 !tests/fixtures/*.json
 !tests/fixtures/*.csv
 
+# Local LinkedIn & social media assets (ignored from Git)
+linkedin_post/
+
 # IDE & OS files
 .vscode/
 .idea/
