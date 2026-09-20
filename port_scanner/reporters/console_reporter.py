@@ -9,18 +9,26 @@ from port_scanner.core.scanner import ScanResult
 from port_scanner.utils.logger import Colors
 
 
-ASCII_BANNER = rf"""{Colors.BRIGHT_CYAN}
-   ___             _       ____                              
-  / _ \___  ______/ /_    / __/______ ____  ___  ___ ____    
- / ___/ _ \/ __/ _  / _  _\ \/ __/ _ `/ _ \/ _ \/ -_) __/    
-/_/   \___/_/  \_,_/ (_) /___/\__/\_,_/_//_/_//_/\__/_/      
-{Colors.DIM}  AegisScan v1.0.0 - High-Speed Security Port Scanner & Fingerprinter
-{Colors.RESET}"""
-
-
 def print_banner() -> None:
-    """Print the startup ASCII banner."""
-    print(ASCII_BANNER)
+    """Print the startup dynamic ASCII banner with system metadata."""
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    banner_lines = [
+        ("    ___    ___________  _________   ______________   _   __", Colors.BRIGHT_CYAN),
+        ("   /   |  / ____/ ____//  _/ ___/  / ___/ ____/   | / | / /", Colors.BRIGHT_CYAN),
+        ("  / /| | / __/ / / __  / / \\__ \\   \\__ \\/ /   / /| |/  |/ / ", Colors.CYAN),
+        (" / ___ |/ /___/ /_/ /_/ / ___/ /  ___/ / /___/ ___ / /|  /  ", Colors.BRIGHT_BLUE),
+        ("/_/  |_/_____/\\____/___//____/  /____/\\____/_/  |_/_/ |_/   ", Colors.BRIGHT_BLUE),
+    ]
+    print()
+    for text, color in banner_lines:
+        print(f"{Colors.BOLD}{color}{text}{Colors.RESET}")
+    
+    border = "=" * 65
+    print(f"{Colors.DIM}{border}{Colors.RESET}")
+    print(f" {Colors.BRIGHT_GREEN}[+]{Colors.RESET} {Colors.BOLD}AegisScan{Colors.RESET} {Colors.DIM}v1.0.0{Colors.RESET} | {Colors.WHITE}Advanced Network Reconnaissance{Colors.RESET}")
+    print(f" {Colors.BRIGHT_GREEN}[+]{Colors.RESET} {Colors.BOLD}Author:{Colors.RESET}    {Colors.BRIGHT_YELLOW}Atikur Rahman{Colors.RESET} | {Colors.DIM}Engine: Multithreaded TCP (RFC 793){Colors.RESET}")
+    print(f" {Colors.BRIGHT_GREEN}[+]{Colors.RESET} {Colors.BOLD}Active @:{Colors.RESET}  {Colors.WHITE}{now_str}{Colors.RESET}")
+    print(f"{Colors.DIM}{border}{Colors.RESET}\n")
 
 
 def print_scan_header(
@@ -32,14 +40,12 @@ def print_scan_header(
     banner_grab: bool,
 ) -> None:
     """Print target configuration summary before starting scan."""
-    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"{Colors.BOLD}{Colors.WHITE}{'=' * 65}{Colors.RESET}")
-    print(f" {Colors.BOLD}Target:{Colors.RESET}       {Colors.BRIGHT_YELLOW}{target_host}{Colors.RESET} ({target_ip})")
-    print(f" {Colors.BOLD}Ports:{Colors.RESET}        {port_count} ports queued")
-    print(f" {Colors.BOLD}Concurrency:{Colors.RESET}  {threads} threads | Socket Timeout: {timeout}s")
-    print(f" {Colors.BOLD}Banners:{Colors.RESET}      {'Enabled' if banner_grab else 'Disabled'}")
-    print(f" {Colors.BOLD}Started at:{Colors.RESET}   {now_str}")
-    print(f"{Colors.BOLD}{Colors.WHITE}{'=' * 65}{Colors.RESET}\n")
+    print(f"{Colors.BOLD}{Colors.WHITE}[*] Target Configuration:{Colors.RESET}")
+    print(f"    - Target:       {Colors.BRIGHT_YELLOW}{target_host}{Colors.RESET} ({target_ip})")
+    print(f"    - Ports Queued: {port_count} ports")
+    print(f"    - Concurrency:  {threads} worker threads")
+    print(f"    - Socket Mode:  Timeout {timeout}s | Banner Grabbing: {'Enabled' if banner_grab else 'Disabled'}")
+    print(f"{Colors.DIM}{'-' * 65}{Colors.RESET}\n")
 
 
 def print_progress(scanned: int, total: int) -> None:
